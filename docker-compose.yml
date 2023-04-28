@@ -1,0 +1,48 @@
+services:
+  codee:
+    image: otterlee99/codeeapp-codee:latest
+    container_name: codee
+    restart: always
+    environment:
+      - APP_NAME=codee
+      - FLASK_CONFIG=production
+    expose:
+      - 5000
+    volumes:
+      - ./log/uwsgi:/var/log/uwsgi
+    networks:
+      - codee-network
+    depends_on:
+      - db
+
+  nginx:
+    image: otterlee99/codeeapp-nginx:new
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./log/nginx:/var/log/nginx
+    depends_on:
+      - codee
+    networks:
+      - codee-network
+  db:
+    image: mariadb:latest
+    container_name: db
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    restart: always
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - codee-network
+
+networks:
+  codee-network:
+
+volumes:
+  mysql-data:
