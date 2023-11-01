@@ -2,7 +2,8 @@
     <section class="modalWrapper">
         <div>
             <form>
-                <div >
+                <h1>Create a new codee file</h1>
+                <div>
                     <label for="name">codee name</label>
                     <div class="create-button-bar">
                         <input class="create-input" id="codee_name" type="text" name="codee_name">
@@ -13,7 +14,8 @@
                     <label for="codee_path">codee path</label>
                     <div>
                         <div class="create-button-bar">
-                            <input class="create-input" id='codee_path' type="text" name='codee_path' disabled="true">
+                            <input class="create-input" id='codee_path' type="text" name='codee_path' value="/"
+                                disabled="true">
                             <button class='browse-btn button' type='button' onclick="openDir('drawer1')">
                                 browse
                             </button>
@@ -41,7 +43,7 @@
                     </div>
                 </div>
                 <div class="create-btn full">
-                    <button class="button full" id="create-button">Create</button>
+                    <button class="button green-btn full" id="create-button">Create</button>
                 </div>
             </form>
 
