@@ -1,7 +1,4 @@
-
-
 async function drawTree() {
-  console.log(tree);
   const jstreeSetting = {
     plugins: ["wholerow"],
     core: {
@@ -16,12 +13,16 @@ async function drawTree() {
       file: {
         icon: "fa fa-file",
       },
+      codee: {
+        icon: "/static/favicon/favicon-16x16.png",
+      },
     },
     plugins: ["types"],
     core: {
       data: tree,
     },
   };
+
   $("#tree").jstree(jstreeSetting);
   $("#modal_tree_1").jstree(jstreeSetting);
   $("#modal_tree_2").jstree(jstreeSetting);
@@ -41,18 +42,27 @@ async function drawTree() {
       $("#ref_path").val(selectedNode.id);
     }
   });
-  
+
   $("#tree").on("select_node.jstree", function (e, data) {
     let node = data.node;
-    if (node.type === "file") {
+    console.log("data", data);
+    if (node.type === "file" || node.type === "codee") {
       window.location.href = `/${owner}/${repo}/${ref}/${node["a_attr"]["path"]}`;
     }
   });
 }
 
-function spreadTree() {  
+function spreadTree() {
   $("#tree").on("ready.jstree", function (e, data) {
-    const parents = $("#tree").jstree(true).get_node(content).parents;
+    setTimeout(function () {
+      const escapedSelector = $.escapeSelector(decodeURIComponent(content));
+      console.log("escapedSelector", escapedSelector);
+      const selectedItem = $(`#${escapedSelector}`);
+      selectedItem.addClass("selected-item");
+      console.log("selectedItem", selectedItem);
+    }, 0);
+
+    const parents = $("#tree").jstree(true).get_node(decodeURIComponent(content)).parents;
     for (let i = parents.length - 2; i >= 0; i--) {
       $("#tree").jstree("open_node", parents[i], 0);
     }
