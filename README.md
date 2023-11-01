@@ -1,4 +1,4 @@
-[screen-recording (14).webm](https://github.com/otterlee9043/codee/assets/43086065/95819a18-55f9-4826-bebc-92c23e7c3654)# 코드 데코레이션 서비스 codee
+# 코드 데코레이션 서비스 codee
 
 ![첫페이지](https://github.com/otterlee9043/codee/assets/43086065/5ba2921b-6b7f-4530-8ec0-0eb5fc467ffd)
 ![편집페이지](https://github.com/otterlee9043/codee/assets/43086065/6c49225a-59fd-4a3c-abae-5c90fdb4b132)
