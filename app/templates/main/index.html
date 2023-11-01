@@ -1,0 +1,46 @@
+{% extends "main/base.html" %} {% block extra_head %}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/github.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/languages/go.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<script>
+    hljs.highlightAll();
+    hljs.initLineNumbersOnLoad();
+</script>
+{% endblock %}
+{% block file_path %}
+<div class="full filepath-bar">
+    <span class="filename" id="filename"></span>
+</div>
+{% endblock %} {% block content %}
+<div class="border-box">
+    <pre id="pre">
+        <code id="code">{{ file_content |escape }}</code>
+    </pre>
+</div>
+{% endblock %} {% block script %}
+<script>
+    const pathName = window.location.pathname;
+    const pathArray = pathName.split('/');
+    const owner = pathArray[1];
+    const repo = pathArray[2];
+    const ref = pathArray[3];
+    const content = pathArray.slice(4).join('/');
+    const tree = JSON.parse({{ tree| tojson }});
+
+    document.title = `${repo}/${content} - codee`;
+
+    $("#owner").text(owner);
+    $("#repo").text(repo);
+    $("#filename").text(decodeURIComponent(content));
+
+    $(async function () {
+        drawTree();
+        spreadTree();
+    });
+</script>
+<script src="{{ url_for('static', filename = 'script/drawtree.js') }}"></script>
+<script src="{{ url_for('static', filename = 'script/index.js') }}"></script>
+<script src="{{ url_for('static', filename = 'script/codee.js') }}"></script>
+{% endblock %}

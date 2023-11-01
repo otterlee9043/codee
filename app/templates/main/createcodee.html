@@ -1,0 +1,55 @@
+<section class="modal modalWindow" id="popupOne">
+    <section class="modalWrapper">
+        <div>
+            <form>
+                <h1>Create a new codee file</h1>
+                <div>
+                    <label for="name">codee name</label>
+                    <div class="create-button-bar">
+                        <input class="create-input" id="codee_name" type="text" name="codee_name">
+                        <span class="cd-ext">.cd</span>
+                    </div>
+                </div>
+                <div>
+                    <label for="codee_path">codee path</label>
+                    <div>
+                        <div class="create-button-bar">
+                            <input class="create-input" id='codee_path' type="text" name='codee_path' value="/"
+                                disabled="true">
+                            <button class='browse-btn button' type='button' onclick="openDir('drawer1')">
+                                browse
+                            </button>
+                        </div>
+                        <div id="drawer1" class="browse-dir scroll">
+                            <ul id="dir_tree" aria-labelledby="tree_label">
+                                <li id="modal_tree_1" class="dir"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <label for="ref_filename">reference file name</label>
+                    <div class="create-button-bar">
+                        <input class="create-input" id='ref_path' name='ref_path' type="text" disabled="true">
+                        <button class='browse-btn button' type='button' onclick="openDir('drawer2')">
+                            browse
+                        </button>
+                    </div>
+                    <div id="drawer2" class="browse-dir scroll">
+                        <ul id="dir_tree" aria-labelledby="tree_label">
+                            <li id="modal_tree_2" class="dir"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="create-btn full">
+                    <button class="button green-btn full" id="create-button">Create</button>
+                </div>
+            </form>
+
+        </div>
+    </section>
+    <span class="closeBtn">×</span>
+</section>
+<section class="modal overlay">
+</section>

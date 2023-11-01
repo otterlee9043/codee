@@ -1,0 +1,32 @@
+{% extends "main/base.html" %}
+{% block username %}{{ current_user.username }}{% endblock %}
+{% block owner %}{{ g.owner }}{% endblock %}
+{% block repo %}{{ g.repo }}{% endblock %}
+{% block content %}
+<div class="center-col">
+    <img src="{{url_for('static', filename='6579900.jpg')}}" class="image" alt="" srcset="">
+    <a class="image-src" href="http://www.freepik.com">Designed by Freepik</a>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    const pathName = window.location.pathname;
+    const pathArray = pathName.split('/');
+    const owner = pathArray[1];
+    const repo = pathArray[2];
+    const ref = pathArray[3];
+    const tree = JSON.parse({{ tree| tojson }});
+    $("#owner").text(owner);
+    $("#repo").text(repo);
+
+    document.title = `${owner}/${repo} - codee`;
+
+    $(function () {
+        console.log(tree);
+        drawTree();
+    });
+    
+</script>
+<script src="{{ url_for('static', filename = 'script/drawtree.js') }}"></script>
+<script src="{{ url_for('static', filename = 'script/codee.js') }}"></script>
+{% endblock %}

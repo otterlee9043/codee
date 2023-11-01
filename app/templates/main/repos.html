@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=deivce-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://kit.fontawesome.com/16fd5c8b77.js" crossorigin="anonymous"></script>
+    <title>Codee</title>
+</head>
+
+<body>
+    <div class="topbar right">
+        <div class="logout2">
+            <span>{{current_user.username}} 님,</span>
+            <a class="black" href="{{ url_for('auth.logout') }}">logout</a>
+        </div>
+    </div>
+    <div class="container center-col">
+        <img src="{{url_for('static', filename='logo.svg')}}" class="big-logo" alt="" srcset="">
+        <div class="border-box">
+            <div class="filename-bar" id="filename">My Repositories</div>
+            <ul class="repos">
+                {% for repo in repos %}
+                <li class="repo">
+                    <a class="black"
+                        href="{{ current_user.username }}/{{ repo['name'] }}/{{ repo['default_branch'] }}">/{{
+                        repo['name'] }}</a>
+                    <div>
+                        <span class="past_time">{{ repo['pushed_at'] | past_time}}</span>
+                        <span class="visibility {{ repo['visibility'] }}">{{ repo['visibility'] }}</span>
+                    </div>
+                </li>
+                <hr>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+
+
+</html>
