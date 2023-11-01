@@ -45,7 +45,6 @@ async function drawTree() {
 
   $("#tree").on("select_node.jstree", function (e, data) {
     let node = data.node;
-    console.log("data", data);
     if (node.type === "file" || node.type === "codee") {
       window.location.href = `/${owner}/${repo}/${ref}/${node["a_attr"]["path"]}`;
     }
@@ -56,10 +55,8 @@ function spreadTree() {
   $("#tree").on("ready.jstree", function (e, data) {
     setTimeout(function () {
       const escapedSelector = $.escapeSelector(decodeURIComponent(content));
-      console.log("escapedSelector", escapedSelector);
       const selectedItem = $(`#${escapedSelector}`);
       selectedItem.addClass("selected-item");
-      console.log("selectedItem", selectedItem);
     }, 0);
 
     const parents = $("#tree").jstree(true).get_node(decodeURIComponent(content)).parents;
