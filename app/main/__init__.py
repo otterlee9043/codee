@@ -2,4 +2,4 @@ from flask import Blueprint
 
 main = Blueprint("main", __name__)
 
-from . import views, errors, filter, merge
+from . import views, errors, filter, merge, utils
