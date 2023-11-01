@@ -8,7 +8,7 @@
     hljs.highlightAll();
     hljs.initLineNumbersOnLoad();
 </script>
-{% endblock %} 
+{% endblock %}
 {% block file_path %}
 <div class="full filepath-bar">
     <span class="filename" id="filename"></span>
@@ -33,7 +33,7 @@
 
     $("#owner").text(owner);
     $("#repo").text(repo);
-    $("#filename").text(content);
+    $("#filename").text(decodeURIComponent(content));
 
     $(async function () {
         drawTree();

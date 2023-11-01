@@ -40,7 +40,7 @@
 
     $("#owner").text(owner);
     $("#repo").text(repo);
-    $("#filename").text(content);
+    $("#filename").text(decodeURIComponent(content));
     $("#ref-filename").text(codee['referenced_file']);
 
     $(async function () {
