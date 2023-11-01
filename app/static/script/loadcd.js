@@ -14,7 +14,7 @@ $(async function () {
   codee = JSON.parse(await getFileContent(owner, repo, content));
   decoration = JSON.parse(codee["data"]);
   const refFileContent = await getFileContent(owner, repo, codee["referenced_file"]);
-  $("#filename").text(codee["referenced_file"]);
+  $("#filename").text(decodeURIComponent(codee["referenced_file"]));
   $("#code").text(refFileContent);
 
   hljs.highlightAll();
@@ -27,7 +27,6 @@ $(async function () {
     renderCodee();
   }, 0);
 });
-
 
 async function getFileContent(owner, repo, content) {
   return await fetch(`/api/v1/repo/${owner}/${repo}/contents/${content}`)
