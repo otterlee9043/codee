@@ -1,7 +1,12 @@
 import os
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 
-load_dotenv(find_dotenv())
+flask_env = os.environ.get("FLASK_ENV", "development")
+
+if flask_env == "development":
+    load_dotenv(".env.development")
+else:
+    load_dotenv(".env.production")
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
