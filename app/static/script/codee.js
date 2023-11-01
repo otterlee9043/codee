@@ -82,7 +82,8 @@ async function updateCodee() {
     method: "POST",
     body: JSON.stringify({
       repo: repo,
-      codee_path: content, 
+      ref: ref,
+      codee_path: content,
       codee_content: codee_content,
     }),
     headers: new Headers({
@@ -95,6 +96,7 @@ async function updateCodee() {
       if (resp.status !== 200) {
         console.log(`Looks like there was a problem. Status code: ${resp.status}, ${resp.text}`);
       }
+      window.location.reload();
     })
     .catch((error) => {
       console.log("Fetch error: " + error);
@@ -108,13 +110,13 @@ async function deleteCodee() {
       method: "POST",
       body: JSON.stringify({
         repo: repo,
-        codee_path: content
+        codee_path: content,
       }),
       headers: new Headers({
         "content-type": "application/json",
       }),
     };
-  
+
     await fetch(`/delete_codee`, opts)
       .then((resp) => {
         if (resp.status !== 200) {
