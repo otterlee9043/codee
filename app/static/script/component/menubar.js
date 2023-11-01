@@ -237,22 +237,34 @@ $.contextMenu({
       icon: "fa-light fa-highlighter",
       autoHide: true,
       items: {
-        red: {
+        "color-1": {
           icon: "fa-solid fa-circle",
           callback: () => {
-            addHighlight("red");
+            addHighlight("color-1");
           },
         },
-        yellow: {
+        "color-2": {
           icon: "fa-solid fa-circle",
           callback: () => {
-            addHighlight("yellow");
+            addHighlight("color-2");
           },
         },
-        green: {
+        "color-3": {
           icon: "fa-solid fa-circle",
           callback: () => {
-            addHighlight("green");
+            addHighlight("color-3");
+          },
+        },
+        "color-4": {
+          icon: "fa-solid fa-circle",
+          callback: () => {
+            addHighlight("color-4");
+          },
+        },
+        "color-5": {
+          icon: "fa-solid fa-circle",
+          callback: () => {
+            addHighlight("color-5");
           },
         },
       },

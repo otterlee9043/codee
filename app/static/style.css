@@ -2,6 +2,8 @@
   box-sizing: border-box;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Rokkitt:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Rokkitt:wght@500&display=swap");
 a {
   text-decoration: none;
 }
@@ -53,10 +55,15 @@ ul {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
 }
 pre {
   margin: 0px;
+}
+
+table {
+  width: 100%;
 }
 
 div.filelist {
@@ -79,8 +86,8 @@ div.box {
 
 .big-logo {
   width: 300px;
-  margin-top: 40px;
-  margin-bottom: 50px;
+  margin-top: 70px;
+  margin-bottom: 65px;
 }
 
 .big-logo-only {
@@ -158,7 +165,6 @@ ul#treeitem {
   border: 2px transparent solid;
 }
 
-
 #treeitem:focus {
   outline: 0;
 }
@@ -176,6 +182,7 @@ ul#treeitem {
 
 .container {
   display: flex;
+  max-width: 1200px;
 }
 
 #group {
@@ -207,7 +214,7 @@ ul#treeitem {
   border-radius: 3px;
   margin-right: 1px;
   margin-left: 1px;
-  padding-left: 2px;
+  padding-left: 1px;
   padding-right: 4px;
   letter-spacing: -3px;
 }
@@ -234,6 +241,7 @@ li.context-menu-item.context-menu-icon {
 
 .context-menu-list {
   box-shadow: 0 2px 2px rgb(0 0 0 / 10%) !important;
+  font-family: "IBM Plex Sans KR", sans-serif;
 }
 
 ul.context-menu-list.context-menu-root {
@@ -246,16 +254,25 @@ ul.context-menu-list.context-menu-root {
 }
 
 .context-menu-root .context-menu-list li:nth-child(1)::before {
-  color: tomato;
+  color: rgb(250, 193, 200);
 }
 
 .context-menu-root .context-menu-list li:nth-child(2)::before {
-  color: rgb(255, 225, 0);
+  color: rgb(242, 203, 255);
 }
 
 .context-menu-root .context-menu-list li:nth-child(3)::before {
-  color: greenyellow;
+  color: rgb(254, 235, 166);
 }
+
+.context-menu-root .context-menu-list li:nth-child(4)::before {
+  color: rgb(237, 255, 159);
+}
+
+.context-menu-root .context-menu-list li:nth-child(5)::before {
+  color: rgb(166, 243, 247);
+}
+
 a:visited {
   text-decoration: none;
 }
@@ -278,15 +295,15 @@ a:visited {
 
 .border-box {
   border: solid 1px rgb(225, 225, 225);
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 0;
   width: 100%;
 }
 
 .button {
   border: solid 1px rgb(225, 225, 225);
-  border-radius: 5px;
-  padding: 5px 10px;
+  border-radius: 17px;
+  padding: 5px 15px;
   background-color: #f6f8fa;
   font-size: 15px;
   font-family: "Readex Pro", sans-serif;
@@ -316,13 +333,13 @@ a:visited {
   float: right;
 }
 
-.clone-btn {
+.green-btn {
   background-color: #2e9637;
   color: white;
   border-color: #2e9637;
 }
 
-.clone-btn:hover {
+.green-btn:hover {
   background-color: #3ec249;
   color: white;
 }
@@ -377,7 +394,7 @@ code {
   border-color: rgb(225, 225, 225);
   background-color: #faf9f6;
   padding: 10px 30px 10px 30px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 @media screen and (max-height: 450px) {
@@ -436,7 +453,6 @@ code {
   color: rgb(56, 56, 56);
 }
 
-
 section.modal {
   display: none;
   position: fixed;
@@ -444,6 +460,7 @@ section.modal {
   left: 0;
   z-index: 998;
 }
+
 section.modalWindow {
   display: none;
   position: absolute;
@@ -468,16 +485,21 @@ section.modal.overlay {
   z-index: 997;
   cursor: pointer;
 }
+
 section.modalWindow section.modalWrapper {
   text-align: left;
   line-height: 20px !important;
+}
+
+.modalWrapper label {
+  font-weight: 500;
 }
 .closeBtn {
   position: absolute;
   right: 10px;
   top: 6px;
   cursor: pointer;
-  color:rgb(56, 56, 56)
+  color: rgb(56, 56, 56);
 }
 
 .col-15 {
@@ -568,6 +590,7 @@ textarea {
   margin-top: 5px;
   margin-left: 30px;
   background: rgb(238, 238, 238);
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .comment {
@@ -600,11 +623,11 @@ textarea {
 }
 
 .reponame {
+  font-weight: 500;
 }
 
-.link {
-}
 .filename {
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -620,6 +643,7 @@ textarea {
   display: flex;
   flex-direction: row;
   margin-bottom: 30px;
+  justify-content: space-between;
 }
 .input-clone {
   flex-grow: 1;
@@ -690,18 +714,23 @@ ul.repos {
   text-align: center;
 }
 
-
 .youtube {
   width: 400px;
   height: 250px;
   border: none;
+  margin: auto;
   padding: 5px;
+}
+
+.iframe-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 td {
   vertical-align: top;
 }
-
 
 .button-wrapper {
   float: right;
@@ -715,12 +744,16 @@ td {
   color: black;
 }
 
+.context-menu-item.context-menu-visible.fa-highlighter > .context-menu-list {
+  display: flex !important;
+  justify-content: space-evenly !important;
+}
+
 .save.button:hover {
   text-decoration: none;
 }
 
-
-.create-button-bar{
+.create-button-bar {
   margin-top: 5px;
   margin-bottom: 5px;
   display: flex;
@@ -728,8 +761,16 @@ td {
   align-items: center;
 }
 
-.create-input{
-  width: 90%;
+.create-input {
+  width: 95%;
+}
+
+.fa-comment-dots input {
+  font-family: "IBM Plex Sans KR", sans-serif;
+}
+
+.comment2 textarea {
+  font-family: "IBM Plex Sans KR", sans-serif;
 }
 
 input[type="text"],
@@ -747,26 +788,30 @@ textarea {
   text-align: center;
 }
 
-.cd-ext{
+.cd-ext {
   font-size: 18px;
   font-stretch: expanded;
 }
 
-.login-btn{
-  font-size: 20px; 
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600&display=swap");
+
+.login-btn {
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 23px;
+  line-height: 150%;
 }
 
-.nonauth-container{
+.nonauth-container {
   position: relative;
 }
 
-.wrapper{
+.wrapper {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
 }
 
-.visibility{
+.visibility {
   border-radius: 21px;
   border: 1px solid #7d7d7d;
   padding-top: 2px;
@@ -777,27 +822,51 @@ textarea {
   font-size: 12px;
 }
 
-.public{
+.public {
   border: 1px solid rgb(0, 134, 218);
   color: rgb(0, 134, 218);
 }
 
-.past_time{
+.past_time {
   font-size: 14px;
   color: rgb(104 104 104);
 }
 
-.repos hr{
+.repos hr {
   border-top: 0.2px solid #f3f3f3;
 }
 
-.container .border-box{
+.container .border-box {
   margin-bottom: 70px;
-  max-width: 800px;
+  /* max-width: 800px; */
 }
 
-.deco-close{
+.deco-close {
   margin-right: 3px;
   margin-left: 3px;
-  color:rgb(166 166 166);
+  color: rgb(166 166 166);
+}
+
+.selected-item {
+  font-weight: bold;
+}
+
+.color-1 {
+  background-color: rgb(250, 193, 200);
+}
+
+.color-2 {
+  background-color: rgb(242, 203, 255);
+}
+
+.color-3 {
+  background-color: rgb(254, 235, 166);
+}
+
+.color-4 {
+  background-color: rgb(237, 255, 159);
+}
+
+.color-5 {
+  background-color: rgb(166, 243, 247);
 }
