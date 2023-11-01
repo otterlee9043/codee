@@ -128,17 +128,18 @@ function addLinkTag(data) {
   console.log(url);
   const linkUrl = new URL(url);
   if (linkUrl.hostname == "www.youtube.com" || linkUrl.hostname == "youtu.be") {
-    console.log("youtube");
     const div = wrapTdtag(selected);
-    const iframe = $("<iframe>", {
+    const iframeWrapper = document.createElement("div");
+    iframeWrapper.classList.add("iframe-wrapper");
+    $("<iframe>", {
       class: "youtube",
       src:
         linkUrl.pathname == "/watch"
           ? `https://www.youtube.com/embed/${linkUrl.searchParams.get("v")}`
-          : `https://www.youtube.com/${linkUrl.pathname}`,
-    }).appendTo(div);
+          : `https://www.youtube.com/embed${linkUrl.pathname}`,
+    }).appendTo(iframeWrapper);
+    div.appendChild(iframeWrapper);
   }
-
   selected.classList.remove("selected");
   registerCommentEvent(url, selected.parentElement, id, "link");
 }
@@ -227,8 +228,6 @@ const NODE = {
   SPAN: 0,
   TEXT: 1,
 };
-// Problem 1
-// fragment 속성 값은 가장 상위 노드에 설정? 해당 노드에 설정?
 
 let fragment = null;
 function saveSelection() {
@@ -718,7 +717,6 @@ function registerCommentEvent(comment, node, id, type) {
   closeBtn.innerText = "X";
   closeBtn.classList.add("right");
   closeBtn.classList.add("deco-close");
-  
 
   commentSpan.appendChild(closeBtn);
   const line = parseInt(getTD(node).getAttribute("data-line-number"));
