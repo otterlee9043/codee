@@ -30,13 +30,6 @@ def get_contents_api(owner, repo, ref, path):
 
 
 def create_contents_api(body, path):
-    print("body")
-    print(body)
-    print("path")
-    print(path)
-    print("current_user.username")
-    print(current_user.username)
-    print("g.repo")
     return requests.put(
         f"https://api.github.com/repos/{current_user.username}/{g.repo}/contents/{path}",
         data=json.dumps(body),

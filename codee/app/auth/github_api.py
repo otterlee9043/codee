@@ -27,7 +27,6 @@ def call_user_api():
 def revoke_access_token():
     resp = call_token_revocation_api()
     if resp.ok:
-        print("Access token revoked successfully.")
         session.pop("access_token", None)
     else:
         print(

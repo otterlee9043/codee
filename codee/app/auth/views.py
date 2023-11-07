@@ -4,7 +4,6 @@ from . import auth
 from .. import db
 from .github_api import *
 from ..models import User
-from flask_login import logout_user
 
 
 @auth.route("/access-token", methods=["GET"])

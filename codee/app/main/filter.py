@@ -5,7 +5,6 @@ import os
 
 @main.app_template_filter()
 def is_cd(file_path):
-    print(os.path.splitext(file_path)[1] == "cd")
     return os.path.splitext(file_path)[1] == ".cd"
 
 

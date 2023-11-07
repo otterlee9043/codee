@@ -111,8 +111,6 @@ def create_codee():
 
     last_commit_sha = None
     commit_list_resp = get_commit_list_api(repo, ref_path)
-    print("commit_list_resp")
-    print(commit_list_resp)
     if commit_list_resp.ok:
         commit_list_json = commit_list_resp.json()
         last_commit_sha = commit_list_json[0]["sha"]
@@ -124,8 +122,6 @@ def create_codee():
         }
 
         resp = create_contents_api(request_body, f"{save_location}/{codee_name}.cd")
-        print("resp")
-        print(resp)
         if resp.ok:
             return "created codee file", 200
 
