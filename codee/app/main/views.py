@@ -84,14 +84,19 @@ def update_codee():
     owner = current_user.username
 
     resp = get_contents_api(owner, g.repo, g.ref, codee_path)
-    resp_json = resp.json()
-
-    if not resp_json.ok:
+    
+    if not resp.ok:
         return "Failed to get previous file content", 500
 
-    blob_resp = create_blob_api(codee_content)
-    if blob_resp.ok:
-        contents_resp = create_contents_api(resp_json["sha", codee_content, codee_path])
+    resp_json = resp.json()
+
+    if resp.ok:
+        request_body = {
+            "message": "Codee 파일 수정",
+            "content": base64.b64encode(codee_content.encode("utf-8")).decode("utf-8"),
+            "sha": resp_json["sha"]
+        }
+        contents_resp = create_contents_api(request_body, codee_path)
         if contents_resp.ok:
             return "Codee file updated successfully", 200
 
