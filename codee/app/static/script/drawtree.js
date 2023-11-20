@@ -29,7 +29,7 @@ async function drawTree() {
 
   $("#modal_tree_1").on("changed.jstree", function (e, data) {
     let selectedNode = data.instance.get_node(data.selected[0]);
-    if (selectedNode.original.type == "dir") {
+    if (selectedNode.original.type === "dir") {
       $("#codee_path").val("");
       $("#codee_path").val(selectedNode.id);
     }
@@ -37,7 +37,7 @@ async function drawTree() {
 
   $("#modal_tree_2").on("changed.jstree", function (e, data) {
     let selectedNode = data.instance.get_node(data.selected[0]);
-    if (selectedNode.original.type == "file") {
+    if (selectedNode.original.type !== "dir") {
       $("#ref_path").val("");
       $("#ref_path").val(selectedNode.id);
     }

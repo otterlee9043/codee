@@ -1,7 +1,6 @@
 function getIndices(newSpan) {
   let start = 0,
     end;
-  //   console.log(newSpan);
   const nodes = newSpan.parentElement.childNodes;
   for (let i = 0; i < nodes.length; i++) {
     if (newSpan.compareDocumentPosition(nodes[i]) & Node.DOCUMENT_POSITION_PRECEDING) {

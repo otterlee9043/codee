@@ -110,6 +110,7 @@ async function deleteCodee() {
       method: "POST",
       body: JSON.stringify({
         repo: repo,
+        ref: ref,
         codee_path: content,
       }),
       headers: new Headers({
