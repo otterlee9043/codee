@@ -27,6 +27,11 @@ function addDeco(line, info) {
 }
 
 function deleteDeco(line, id) {
-  decoration[line].filter((info) => info["id"] !== id);
-  if (decoration[line].length === 0) delete decoration[line];
+  if (decoration[line]) {
+    decoration[line] = decoration[line].filter((info) => info["id"] !== id);
+
+    if (decoration[line].length === 0) {
+      delete decoration[line];
+    }
+  }
 }

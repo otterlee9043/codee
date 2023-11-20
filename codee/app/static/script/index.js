@@ -125,7 +125,6 @@ function addLinkTag(data) {
   selected.before(link);
   link.appendChild(selected);
 
-  console.log(url);
   const linkUrl = new URL(url);
   if (linkUrl.hostname == "www.youtube.com" || linkUrl.hostname == "youtu.be") {
     const div = wrapTdtag(selected);
@@ -285,7 +284,7 @@ function hideLine() {
         });
         const ID = randomId();
         selectedInfo.push({ start: start, number: numberLinesSelected, id: ID });
-        console.log(selectedInfo);
+
         let line = get(`#L${start}`);
         createEllipsisNode(line);
 
@@ -494,7 +493,7 @@ function hideText() {
   let selectionText;
   if (document.getSelection) {
     selectionText = document.getSelection();
-    console.log(selectionText);
+
     if (
       !isString(selectionText.anchorNode.nodeValue) ||
       !isString(selectionText.focusNode.nodeValue)
@@ -699,7 +698,7 @@ function mergeNode(node, commentSpan = null) {
     // node.parentNode.insertBefore(child, node);
     node.before(child);
   }
-  console.log();
+
   node.remove();
   if (commentSpan) commentSpan.remove();
   Array.from(children).map((node) => {
@@ -721,7 +720,6 @@ function registerCommentEvent(comment, node, id, type) {
   commentSpan.appendChild(closeBtn);
   const line = parseInt(getTD(node).getAttribute("data-line-number"));
   closeBtn.addEventListener("click", () => {
-    console.log(commentSpan.id);
     if (type == "comment") {
       deleteDeco(line, commentSpan.id);
     } else if (type == "link") {
@@ -734,7 +732,6 @@ function registerCommentEvent(comment, node, id, type) {
     mergeNode(node, commentSpan);
   });
 
-  console.log(type);
   if (type == "link") {
     commentSpan.classList.add("linkComment");
     commentSpan.addEventListener("mouseenter", () => {
@@ -748,14 +745,6 @@ function registerCommentEvent(comment, node, id, type) {
     removeContextMenu();
     showCommentDetail(node, commentSpan);
   });
-}
-
-function showDecoDetail(span) {
-  const type = span.classList[0];
-  console.log(type);
-  switch (type) {
-    case "comment-underline":
-  }
 }
 
 function showCommentDetail(span, commentSpan) {

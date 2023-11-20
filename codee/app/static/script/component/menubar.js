@@ -102,10 +102,9 @@ function saveSelection() {
 }
 
 function restoreSelection() {
-  console.log("restoreSelection");
   let tdTag = document.querySelector(`#L${line} > .hljs-ln-code`);
   let startTag = findOffsetTag(tdTag, startIndex);
-  console.log(startTag);
+
   let endTag = findOffsetTag(tdTag, endIndex);
   let newRange = document.createRange();
   newRange.setStart(startTag.tag, startTag.startOffset);
@@ -116,7 +115,6 @@ function restoreSelection() {
 
 function createFakeSelection(event) {
   let span = createNewSpan(document.getSelection());
-  console.log("createFakeSelection", span);
   span.classList.add("selected");
 }
 
@@ -130,7 +128,7 @@ function removeFakeSelection(event) {
       children.push(child);
       selected.parentNode.insertBefore(child, selected);
     }
-    console.log();
+
     selected.remove();
     Array.from(children).map((node) => {
       merge(node);
@@ -141,7 +139,6 @@ function removeFakeSelection(event) {
 }
 
 function openLink(e) {
-  console.log("click link");
   url = e.getAttribute("url");
   window.open(url, "_blank").focus();
 }
@@ -204,9 +201,7 @@ $.contextMenu({
       autoHide: false,
       selectableSubMenu: true,
       events: {
-        click: (event) => {
-          console.log("@@@ mousedown", event);
-        },
+        click: (event) => {},
       },
       items: {
         comment2: {
@@ -290,7 +285,6 @@ $.contextMenu({
           type: "text",
           events: {
             keyup: function (e) {
-              console.log("items > link > items > 'link-1' > events");
               const inputs = getAll(".context-menu-input input, .context-menu-input textarea");
               const input = get("[name=context-menu-input-link]");
               if (e.keyCode == KEY.ENTER && input.value) {
